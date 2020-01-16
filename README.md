@@ -20,34 +20,35 @@ Technologie i narzędzia zastosowane przy realizacji projektu:
 
 Dla wymienionych niżej funkcjonalności zdefiniowane zostały trzy poziomy dostępu. Poziom dostępu odpowiada zatrudnieniu pracownika w konkretnym dziale z podziałem na administratora systemów informatycznych (Administracja), magazyniera (Magazyn) i pracownika biura (Biuro).
 Administrator zarządza kontami pracowników, osobiście odpowiada za weryfikację danych personalnych użytkownika na podstawie okazanego przez niego dokumentu tożsamości, a następnie poprzez przydzielenie poziomu dostępu, autoryzuje konto, które może aktywować i dezaktywować. Pracownik biura zarządza produktem oraz kontami kontrahentów. Magazynier zarządza lokalizacjami w magazynie, które stanowią wydzieloną przestrzeń półki na regale magazynowym, służącym do składowania towaru oraz stanami magazynowymi na tych lokalizacjach, czyli produktami w określonej liczbie sztuk, które zostały dostarczone przez kontrahentów.
+
 System udostępnia następujące funkcjonalności:
-• Rejestrowanie kont użytkowników wraz z autoryzacją kont poprzez przypisanie im odpowiedniego poziomu dostępu.
-• Uwierzytelnianie użytkowników i autoryzację względem przypisanego do konta poziomu dostępu.
-• Przechowywanie wzorców loginów i haseł kont użytkowników w relacyjnej bazie danych, przy czym haseł w postaci niejawnej jako skrót wyliczony algorytmem SHA256.
-• Edycję danych personalnych użytkowników.
-• Aktywację i dezaktywację utworzonego konta.
-• Zmianę własnego hasła każdemu użytkownikowi oraz resetowanie hasła użytkownikowi nieuwierzytelnionemu.
-• Tworzenie i edycję produktu o określonych cechach.
-• Tworzenie i edycję lokalizacji składowania towarów w magazynie w formacie opisującym: alejkę – numer regału – półkę – pozycję na półce (np. XX-00-00-00) oraz o maksymalnej dopuszczalnej wadze z uwzględnieniem nośności półki regału magazynowego.
-• Przeniesienie towaru z jednej lokalizacji na drugą.
-• Wprowadzenie na stan magazynowy towaru od danego kontrahenta wraz z liczbą sztuk na konkretną lokalizację w magazynie.
-• Wydanie ze stanu magazynowego towaru w określonej liczbie sztuk z konkretnej lokalizacji dla danego kontrahenta.
-• Wyświetlenie stanu magazynowego.
-• Rejestrację kont kontrahentów w celu zachowania ich danych. Kontrahentami są zarówno firmy jak i osoby fizyczne, dostawcy od których pochodzi towar wprowadzany na stan oraz klienci dla których towar jest wydawany ze stanu.
-• Resetowanie danych kontrahentów.
-• Usunięcie produktu o ile ten nie ma stanu magazynowego.
-• Usunięcie pustej lokalizacji, czyli takiej bez przypisanego produktu wraz z liczbą sztuk, jest możliwe w przypadku likwidacji regału magazynowego.
+- Rejestrowanie kont użytkowników wraz z autoryzacją kont poprzez przypisanie im odpowiedniego poziomu dostępu.
+- Uwierzytelnianie użytkowników i autoryzację względem przypisanego do konta poziomu dostępu.
+- Przechowywanie wzorców loginów i haseł kont użytkowników w relacyjnej bazie danych, przy czym haseł w postaci niejawnej jako skrót wyliczony algorytmem SHA256.
+- Edycję danych personalnych użytkowników.
+- Aktywację i dezaktywację utworzonego konta.
+- Zmianę własnego hasła każdemu użytkownikowi oraz resetowanie hasła użytkownikowi nieuwierzytelnionemu.
+- Tworzenie i edycję produktu o określonych cechach.
+- Tworzenie i edycję lokalizacji składowania towarów w magazynie w formacie opisującym: alejkę – numer regału – półkę – pozycję na półce (np. XX-00-00-00) oraz o maksymalnej dopuszczalnej wadze z uwzględnieniem nośności półki regału magazynowego.
+- Przeniesienie towaru z jednej lokalizacji na drugą.
+- Wprowadzenie na stan magazynowy towaru od danego kontrahenta wraz z liczbą sztuk na konkretną lokalizację w magazynie.
+- Wydanie ze stanu magazynowego towaru w określonej liczbie sztuk z konkretnej lokalizacji dla danego kontrahenta.
+- Wyświetlenie stanu magazynowego.
+- Rejestrację kont kontrahentów w celu zachowania ich danych. Kontrahentami są zarówno firmy jak i osoby fizyczne, dostawcy od których pochodzi towar wprowadzany na stan oraz klienci dla których towar jest wydawany ze stanu.
+- Resetowanie danych kontrahentów.
+- Usunięcie produktu o ile ten nie ma stanu magazynowego.
+- Usunięcie pustej lokalizacji, czyli takiej bez przypisanego produktu wraz z liczbą sztuk, jest możliwe w przypadku likwidacji regału magazynowego.
 
 Wymagania niefunkcjonalne wynikające z potrzeb użytkownika:
-• Uwierzytelnienie się poprzez podanie unikalnego, niezmiennego loginu oraz hasła.
-• Wylogowanie się uwierzytelnionego użytkownika następuje automatycznie po upływie 25 minut nieaktywności, kiedy to sesja uwierzytelnionego użytkownika zostanie zakończona lub ze skutkiem natychmiastowym na żądanie użytkownika.
-• Każdy użytkownik dysponuje indywidualnym kontem. Użytkownik może korzystać z konta jeżeli posiada ono przypisany poziom dostępu, jest potwierdzone i aktywne.
-• Każde konto ma przypisany jeden poziom dostępu.
-• Użytkownik ma przydzielone uprawnienia do konkretnych funkcji systemu zależne od przypisanego poziomu dostępu.
-• Wielodostępność systemu umożliwia jednoczesną pracę wielu użytkowników. Koordynowanie dostępu do danych odbywa się z wykorzystaniem transakcji i blokad optymistycznych.
-• Zapewniona jest obsługa błędów oraz przechowywanie historii zdarzeń w dziennikach systemowych.
-• Ujednolicony graficzny interfejs użytkownika pozwala na obsługę systemu z wykorzystaniem współczesnej przeglądarki internetowej.
-• Internacjonalizacja w interfejsie użytkownika udostępnia dwie wersje językowe: polską i angielską. Dane wprowadzone do aplikacji poprzez formularze nie podlegają internacjonalizacji.
-• Dane biznesowe przechowywane są w relacyjnej bazie danych z wykorzystaniem mapowania obiektowo-relacyjnego.
-• Serwer aplikacyjny, na którym działa aplikacja ma bieżący czas systemowy zgodny z aktualnym czasem.
-• System informatyczny przechowuje w bazie danych informacje o ostatniej operacji na obiekcie wraz z datą i godziną modyfikacji tego obiektu oraz użytkownikiem, który dokonał modyfikacji. Do czasu usunięcia obiektu zachowana jest również data i godzina utworzenia obiektu oraz informacja o tym, kto utworzył obiekt. Przypisane konto uwierzytelnionego użytkownika pobierane jest z bieżącego logowania, a data i godzina są zbieżne są z czasem systemowym.
+- Uwierzytelnienie się poprzez podanie unikalnego, niezmiennego loginu oraz hasła.
+- Wylogowanie się uwierzytelnionego użytkownika następuje automatycznie po upływie 25 minut nieaktywności, kiedy to sesja uwierzytelnionego użytkownika zostanie zakończona lub ze skutkiem natychmiastowym na żądanie użytkownika.
+- Każdy użytkownik dysponuje indywidualnym kontem. Użytkownik może korzystać z konta jeżeli posiada ono przypisany poziom dostępu, jest potwierdzone i aktywne.
+- Każde konto ma przypisany jeden poziom dostępu.
+- Użytkownik ma przydzielone uprawnienia do konkretnych funkcji systemu zależne od przypisanego poziomu dostępu.
+- Wielodostępność systemu umożliwia jednoczesną pracę wielu użytkowników. Koordynowanie dostępu do danych odbywa się z wykorzystaniem transakcji i blokad optymistycznych.
+- Zapewniona jest obsługa błędów oraz przechowywanie historii zdarzeń w dziennikach systemowych.
+- Ujednolicony graficzny interfejs użytkownika pozwala na obsługę systemu z wykorzystaniem współczesnej przeglądarki internetowej.
+- Internacjonalizacja w interfejsie użytkownika udostępnia dwie wersje językowe: polską i angielską. Dane wprowadzone do aplikacji poprzez formularze nie podlegają internacjonalizacji.
+- Dane biznesowe przechowywane są w relacyjnej bazie danych z wykorzystaniem mapowania obiektowo-relacyjnego.
+- Serwer aplikacyjny, na którym działa aplikacja ma bieżący czas systemowy zgodny z aktualnym czasem.
+- System informatyczny przechowuje w bazie danych informacje o ostatniej operacji na obiekcie wraz z datą i godziną modyfikacji tego obiektu oraz użytkownikiem, który dokonał modyfikacji. Do czasu usunięcia obiektu zachowana jest również data i godzina utworzenia obiektu oraz informacja o tym, kto utworzył obiekt. Przypisane konto uwierzytelnionego użytkownika pobierane jest z bieżącego logowania, a data i godzina są zbieżne są z czasem systemowym.
